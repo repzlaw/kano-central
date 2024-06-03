@@ -7,7 +7,7 @@ use Laravel\Fortify\Fortify;
 
 return new class extends Migration
 {
-    /**
+    /** 
      * Run the migrations.
      */
     public function up(): void

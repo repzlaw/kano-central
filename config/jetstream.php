@@ -78,4 +78,11 @@ return [
 
     'profile_photo_disk' => 'public',
 
+    'allowed_team_creation_emails' => [
+        'lleger@kanoci.com',
+        'ibitoyedavid@gmail.com',
+        'admin@admin.com'
+
+    ],
+
 ];

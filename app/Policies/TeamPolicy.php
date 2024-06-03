@@ -31,7 +31,11 @@ class TeamPolicy
      */
     public function create(User $user): bool
     {
-        return true;
+        if(in_array($user->email, config('jetstream.allowed_team_creation_emails'))){
+            return true;
+        }
+
+        return false;
     }
 
     /**

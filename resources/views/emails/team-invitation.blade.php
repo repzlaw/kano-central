@@ -2,9 +2,9 @@
 {{ __('You have been invited to join the :team group!', ['team' => $invitation->team->name]) }}
 
 @if (Laravel\Fortify\Features::enabled(Laravel\Fortify\Features::registration()))
-{{ __('If you do not have an account, you may create one by clicking the button below. After creating an account, you may click the invitation acceptance button in this email to accept the group invitation:') }}
+{{ __('If you do not have an account, you may create one by clicking the button below:') }}
 
-@component('mail::button', ['url' => route('register')])
+@component('mail::button', ['url' => route('register', ['email' => $invitation->email, 'team' => $invitation->team_id])])
 {{ __('Create Account') }}
 @endcomponent
 

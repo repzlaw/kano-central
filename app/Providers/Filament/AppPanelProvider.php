@@ -104,12 +104,12 @@ class AppPanelProvider extends PanelProvider
                 ->tenantRegistration(CreateTeam::class)
                 ->tenantProfile(EditTeam::class)
                 ->userMenuItems([
-                    MenuItem::make()
-                        ->label('Group Settings')
-                        ->icon('heroicon-o-cog-6-tooth')
-                        ->url(fn () => $this->shouldRegisterMenuItem()
-                            ? url(EditTeam::getUrl())
-                            : url($panel->getPath())),
+                    // MenuItem::make()
+                    //     ->label('Group Settings')
+                    //     ->icon('heroicon-o-cog-6-tooth')
+                    //     ->url(fn () => $this->shouldRegisterMenuItem()
+                    //         ? url(EditTeam::getUrl())
+                    //         : url($panel->getPath())),
                 ]);
         }
 
@@ -150,4 +150,5 @@ class AppPanelProvider extends PanelProvider
         // return auth()->user()?->hasVerifiedEmail() && Filament::hasTenancy() && Filament::getTenant();
         return auth()->check() && Filament::hasTenancy() && Filament::getTenant();
     }
+
 }

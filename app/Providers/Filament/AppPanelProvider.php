@@ -2,36 +2,37 @@
 
 namespace App\Providers\Filament;
 
-use App\Filament\Pages\ApiTokens;
-use App\Filament\Pages\CreateTeam;
-use App\Filament\Pages\EditProfile;
-use App\Filament\Pages\EditTeam;
-use App\Listeners\CreatePersonalTeam;
-use App\Listeners\SwitchTeam;
-use App\Models\Team;
-use Filament\Events\Auth\Registered;
-use Filament\Events\TenantSet;
-use Filament\Facades\Filament;
-use Filament\Http\Middleware\Authenticate;
-use Filament\Http\Middleware\DisableBladeIconComponents;
-use Filament\Http\Middleware\DispatchServingFilamentEvent;
-use Filament\Navigation\MenuItem;
 use Filament\Pages;
 use Filament\Panel;
-use Filament\PanelProvider;
-use Filament\Support\Colors\Color;
+use App\Models\Team;
 use Filament\Widgets;
-use Illuminate\Cookie\Middleware\AddQueuedCookiesToResponse;
+use Filament\PanelProvider;
+use Laravel\Fortify\Fortify;
+use App\Listeners\SwitchTeam;
+use Filament\Events\TenantSet;
+use Filament\Facades\Filament;
+use Laravel\Jetstream\Features;
+use App\Filament\Pages\EditTeam;
+use Laravel\Jetstream\Jetstream;
+use App\Filament\Pages\ApiTokens;
+use Filament\Navigation\MenuItem;
+use App\Filament\Pages\Auth\Register;
+use App\Filament\Pages\CreateTeam;
+use Filament\Support\Colors\Color;
+use App\Filament\Pages\EditProfile;
+use Filament\Events\Auth\Registered;
+use App\Listeners\CreatePersonalTeam;
+use Illuminate\Support\Facades\Event;
+use Filament\Http\Middleware\Authenticate;
+use Illuminate\Session\Middleware\StartSession;
 use Illuminate\Cookie\Middleware\EncryptCookies;
-use Illuminate\Foundation\Http\Middleware\VerifyCsrfToken;
 use Illuminate\Routing\Middleware\SubstituteBindings;
 use Illuminate\Session\Middleware\AuthenticateSession;
-use Illuminate\Session\Middleware\StartSession;
-use Illuminate\Support\Facades\Event;
 use Illuminate\View\Middleware\ShareErrorsFromSession;
-use Laravel\Fortify\Fortify;
-use Laravel\Jetstream\Features;
-use Laravel\Jetstream\Jetstream;
+use Filament\Http\Middleware\DisableBladeIconComponents;
+use Filament\Http\Middleware\DispatchServingFilamentEvent;
+use Illuminate\Foundation\Http\Middleware\VerifyCsrfToken;
+use Illuminate\Cookie\Middleware\AddQueuedCookiesToResponse;
 
 class AppPanelProvider extends PanelProvider
 {
@@ -42,7 +43,7 @@ class AppPanelProvider extends PanelProvider
             ->id('app')
             ->path('app')
             ->login()
-            ->registration()
+            ->registration(Register::class)
             ->passwordReset()
             ->emailVerification()
             ->viteTheme('resources/css/app.css')

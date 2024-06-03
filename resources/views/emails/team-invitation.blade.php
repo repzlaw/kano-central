@@ -4,7 +4,7 @@
 @if (Laravel\Fortify\Features::enabled(Laravel\Fortify\Features::registration()))
 {{ __('If you do not have an account, you may create one by clicking the button below:') }}
 
-@component('mail::button', ['url' => route('register', ['email' => $invitation->email, 'team' => $invitation->team_id])])
+@component('mail::button', ['url' => route('filament.app.auth.register', ['email' => $invitation->email, 'team' => $invitation->team_id])])
 {{ __('Create Account') }}
 @endcomponent
 

@@ -15,7 +15,7 @@ models:
       belongsTo: User
       hasMany: Credential_Attachment
 
-  Credential_Attachment:
+  CredentialAttachment:
     filename: string
     type: string
     size: integer
@@ -43,7 +43,7 @@ models:
       belongsTo: User
       hasMany: Activity_Attachment
 
-  Activity_Attachment:
+  ActivityAttachment:
     filename: string
     type: string
     size: integer

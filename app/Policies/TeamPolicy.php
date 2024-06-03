@@ -43,7 +43,7 @@ class TeamPolicy
      */
     public function update(User $user, Team $team): bool
     {
-        return $user->ownsTeam($team);
+        return $user->ownsTeam($team) || $user->hasTeamPermission($user->currentTeam, 'team:update');
     }
 
     /**
@@ -51,7 +51,7 @@ class TeamPolicy
      */
     public function addTeamMember(User $user, Team $team): bool
     {
-        return $user->ownsTeam($team);
+        return $user->ownsTeam($team) || $user->hasTeamPermission($user->currentTeam, 'team:invite');
     }
 
     /**
@@ -59,7 +59,7 @@ class TeamPolicy
      */
     public function updateTeamMember(User $user, Team $team): bool
     {
-        return $user->ownsTeam($team);
+        return $user->ownsTeam($team) || $user->hasTeamPermission($user->currentTeam, 'team:assign');
     }
 
     /**
@@ -67,7 +67,7 @@ class TeamPolicy
      */
     public function removeTeamMember(User $user, Team $team): bool
     {
-        return $user->ownsTeam($team);
+        return $user->ownsTeam($team) || $user->hasTeamPermission($user->currentTeam, 'team:remove');
     }
 
     /**

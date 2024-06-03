@@ -56,8 +56,8 @@ class AppPanelProvider extends PanelProvider
                     ->icon('heroicon-o-user-circle')
                     ->url(fn () => $this->shouldRegisterMenuItem()
                         ? url(EditProfile::getUrl())
-                        : url(EditProfile::getUrl())),
-                        // : url($panel->getPath())),
+                        // : url(EditProfile::getUrl())),
+                        : url($panel->getPath())),
             ])
             ->discoverResources(in: app_path('Filament/Resources'), for: 'App\\Filament\\Resources')
             ->discoverPages(in: app_path('Filament/Pages'), for: 'App\\Filament\\Pages')
@@ -104,7 +104,7 @@ class AppPanelProvider extends PanelProvider
                 ->tenantProfile(EditTeam::class)
                 ->userMenuItems([
                     MenuItem::make()
-                        ->label('Team Settings')
+                        ->label('Group Settings')
                         ->icon('heroicon-o-cog-6-tooth')
                         ->url(fn () => $this->shouldRegisterMenuItem()
                             ? url(EditTeam::getUrl())

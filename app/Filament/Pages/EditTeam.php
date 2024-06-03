@@ -13,7 +13,7 @@ class EditTeam extends EditTenantProfile
 
     public static function getLabel(): string
     {
-        return 'Team Settings';
+        return 'Group Settings';
     }
 
     protected function getViewData(): array

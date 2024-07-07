@@ -1,0 +1,84 @@
+models:
+  Credential:
+    name: string
+    type: string
+    description: string
+    status: string
+    issuer: string
+    issue_date: datetime
+    expire_date: datetime
+    approve_date: datetime
+    approver_comment: text
+    approver_id: id foreign:users
+    user_id: id foreign
+    relationships:
+      belongsTo: User
+      hasMany: Credential_Attachment
+
+  CredentialAttachment:
+    filename: string
+    type: string
+    size: integer
+    url: string
+    review_date: datetime
+    reviewer_id: id foreign:users
+    credential_id: id foreign
+    relationships:
+      belongsTo: Credential
+
+  Activity:
+    name: string
+    type: string
+    description: string
+    status: string
+    provider: string
+    start_date: datetime
+    end_date: datetime
+    hours: integer
+    approve_date: datetime
+    approver_comment: text
+    approver_id: id foreign:users
+    user_id: id foreign
+    relationships:
+      belongsTo: User
+      hasMany: Activity_Attachment
+
+  ActivityAttachment:
+    filename: string
+    type: string
+    size: integer
+    url: string
+    review_date: datetime
+    reviewer_id: id foreign:users
+    activity_id: id foreign
+    relationships:
+      belongsTo: Activity
+
+  Event:
+    name: string
+    type: string
+    description: string
+    location: string
+    start_date: datetime
+    end_date: datetime
+    group_id: id foreign
+    relationships:
+      belongsTo: Group
+
+  Task:
+    name: string
+    type: string
+    description: string
+    status: string
+    due_date: datetime
+    complete_date: datetime
+    user_id: id foreign
+    relationships:
+      belongsTo: User
+
+  Group:
+    name: string
+    type: string
+    description: string
+    relationships:
+      belongsToMany: User
